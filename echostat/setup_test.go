@@ -13,12 +13,14 @@ import (
 )
 
 func TestSetup(t *testing.T) {
-	statsFunc := func(c echo.Context) (map[string]any, error) {
+	t.Parallel()
+
+	statsFunc := func(echo.Context) (map[string]any, error) {
 		return map[string]any{
 			"text": "Hello, World!",
 		}, nil
 	}
-	failingStatsFunc := func(c echo.Context) (map[string]any, error) {
+	failingStatsFunc := func(echo.Context) (map[string]any, error) {
 		return nil, errors.New("something went wrong")
 	}
 
@@ -168,7 +170,9 @@ func TestSetup(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		t.Run(tc.name, func(*testing.T) {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
 			echostat.SetupStats(tc.router, tc.statsFunc, tc.opts)
 		})
 	}

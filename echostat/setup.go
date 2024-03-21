@@ -14,7 +14,7 @@ func SetupStats(router EchoRouter, statsFunc StatsFunc, opts StatOptions) {
 
 		apiKeyHeader := opts.APIKeyHeader
 		if apiKeyHeader == "" {
-			apiKeyHeader = "X-API-Key"
+			apiKeyHeader = "X-API-Key" //nolint:gosec
 		}
 
 		apiKey := c.Request().Header.Get(apiKeyHeader)

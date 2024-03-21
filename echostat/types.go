@@ -1,6 +1,8 @@
 package echostat
 
 //go:generate go run github.com/vektra/mockery/v2@v2.42.1 --name=EchoRouter --case=underscore --with-expecter
+
+//nolint:revive
 //go:generate go run github.com/vektra/mockery/v2@v2.42.1 --name=Context --srcpkg=github.com/labstack/echo/v4 --structname=EchoContext --case=underscore --with-expecter
 
 import "github.com/labstack/echo/v4"
