@@ -23,6 +23,7 @@ jobs:
       - name: Run tests
         run: |
           go test -coverprofile coverage.out ./...
+          cat coverage.out | grep -v "/mocks/" > coverage.out
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
